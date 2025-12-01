@@ -1,7 +1,5 @@
 import java.io.*;
 
-import java.io.*;
-
 class Dial {
     
     private int position;
@@ -63,3 +61,4 @@ public class Day1Part2 {
     }
     
 }
+
