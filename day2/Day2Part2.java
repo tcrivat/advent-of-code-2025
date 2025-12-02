@@ -2,18 +2,18 @@ import java.io.*;
 
 public class Day2Part2 {
 
-    private static final String INPUT_FILE = "input.txt";
+    private static final String INPUT_FILE = "input1.txt";
     private static long answer = 0;
     
     private static boolean isInvalid(long number) {
-        char[] s = Long.toString(number).toCharArray();
-        outer: for (int l = 1; l <= s.length / 2; l++) {
+        char[] digits = Long.toString(number).toCharArray();
+        outer: for (int l = 1; l <= digits.length / 2; l++) {
             // l = length of the repeating sequence
-            if (s.length % l != 0) {
+            if (digits.length % l != 0) {
                 continue outer;
             }
-            for (int i = l; i < s.length; i++) {
-                if (s[i] != s[i - l]) {
+            for (int i = l; i < digits.length; i++) {
+                if (digits[i] != digits[i - l]) {
                     continue outer;
                 }
             }

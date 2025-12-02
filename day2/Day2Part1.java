@@ -2,17 +2,21 @@ import java.io.*;
 
 public class Day2Part1 {
 
-    private static final String INPUT_FILE = "input.txt";
+    private static final String INPUT_FILE = "input1.txt";
     private static long answer = 0;
     
     private static boolean isInvalid(long number) {
-        String s = Long.toString(number);
-        if (s.length() % 2 == 1) {
+        char[] digits = Long.toString(number).toCharArray();
+        if (digits.length % 2 == 1) {
             return false;
         } else {
-            String firstHalf = s.substring(0, s.length() / 2);
-            String secondHalf = s.substring(s.length() / 2, s.length());
-            return firstHalf.equals(secondHalf);
+            int half = digits.length / 2;
+            for (int i = half; i < digits.length; i++) {
+                if (digits[i] != digits[i - half]) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
     
