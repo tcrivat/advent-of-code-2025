@@ -2,7 +2,6 @@ import java.io.*;
 
 public class Day2Part2 {
 
-    private static final String INPUT_FILE = "input1.txt";
     private static long answer = 0;
     
     private static boolean isInvalid(long number) {
@@ -44,7 +43,8 @@ public class Day2Part2 {
     }
     
     public static void main(String[] args) throws IOException {
-        readInput(INPUT_FILE);
+        String input_file = "input" + args[0] + ".txt";
+        readInput(input_file);
         System.out.println(answer);
     }
 }
