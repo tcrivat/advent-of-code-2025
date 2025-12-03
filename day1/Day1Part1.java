@@ -29,14 +29,13 @@ class Dial {
 
 public class Day1Part1 {
 
-    private static final String INPUT_FILE = "input.txt";
     private static final int START_POSITION = 50;
     private static final int DIAL_SIZE = 100;
     
     private static Dial dial = new Dial(START_POSITION, DIAL_SIZE);
     private static int answer = 0;
     
-    private static void solveLine(int amount) {
+    private static void solve(int amount) {
         dial.move(amount);
         if (dial.isAtPosition(0)) {
             answer++;
@@ -48,13 +47,14 @@ public class Day1Part1 {
             String line;
             while ((line = br.readLine()) != null) {
                 line = line.replace('R', '+').replace('L', '-');
-                solveLine(Integer.parseInt(line));
+                solve(Integer.parseInt(line));
             }
         }
     }
     
     public static void main(String[] args) throws IOException {
-        readInput(INPUT_FILE);
+        String input_file = "input" + args[0] + ".txt";
+        readInput(input_file);
         System.out.println(answer);
     }
     

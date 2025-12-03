@@ -19,9 +19,11 @@ class Dial {
         amount %= size;
         
         position += amount;
-        // any rotation to the right that goes beyond size or
-        // any rotation to the left that goes beyond 0 (exept when starting from 0)
-        // will also pass through 0 one more time
+        /*
+            any rotation to the right that goes beyond size or
+            any rotation to the left that goes beyond 0 (exept when starting from 0)
+            will also pass through 0 one more time
+        */
         if (position >= size || position <= 0 && !startFrom0) {
             count++;
         }
@@ -34,15 +36,14 @@ class Dial {
 
 public class Day1Part2 {
 
-    private static final String INPUT_FILE = "input.txt";
     private static final int START_POSITION = 50;
     private static final int DIAL_SIZE = 100;
     
     private static Dial dial = new Dial(START_POSITION, DIAL_SIZE);
     private static int answer = 0;
     
-    private static void solveLine(int amount) {
-        answer += dial.moveAndCount(amount);
+    private static int solve(int amount) {
+        return dial.moveAndCount(amount);
     }
     
     private static void readInput(String filename) throws IOException {
@@ -50,15 +51,15 @@ public class Day1Part2 {
             String line;
             while ((line = br.readLine()) != null) {
                 line = line.replace('R', '+').replace('L', '-');
-                solveLine(Integer.parseInt(line));
+                answer += solve(Integer.parseInt(line));
             }
         }
     }
     
     public static void main(String[] args) throws IOException {
-        readInput(INPUT_FILE);
+        String input_file = "input" + args[0] + ".txt";
+        readInput(input_file);
         System.out.println(answer);
     }
     
 }
-
