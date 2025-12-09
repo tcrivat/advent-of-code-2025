@@ -88,7 +88,7 @@ public class Day9Part2 {
         return true;
     }
     
-    private static void markRectangle(int x1, int y1, int x2, int y2) {
+    private static void markSolution(int x1, int y1, int x2, int y2) {
         int xMin = Math.min(x1, x2);
         int xMax = Math.max(x1, x2);
         int yMin = Math.min(y1, y2);
@@ -122,11 +122,11 @@ public class Day9Part2 {
         int maxI = 0, maxJ = 0;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                if (!checkRedOrGreen(x.get(i), y.get(i), x.get(j), y.get(j))) {
-                    continue;
-                }
                 long area = computeArea(x.get(i), y.get(i), x.get(j), y.get(j));
                 if (area > maxArea) {
+                    if (!checkRedOrGreen(x.get(i), y.get(i), x.get(j), y.get(j))) {
+                        continue;
+                    }
                     maxArea = area;
                     maxI = i;
                     maxJ = j;
@@ -137,7 +137,7 @@ public class Day9Part2 {
         answer = computeArea(xOrig.get(maxI), yOrig.get(maxI),
                              xOrig.get(maxJ), yOrig.get(maxJ));
         
-        // markRectangle(x.get(maxI), y.get(maxI),
+        // markSolution(x.get(maxI), y.get(maxI),
                       // x.get(maxJ), y.get(maxJ));
         // printMap();
     }
