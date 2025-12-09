@@ -79,10 +79,13 @@ public class Day9Part2 {
         int yMin = Math.min(y1, y2);
         int yMax = Math.max(y1, y2);
         for (int i = yMin; i <= yMax; i++) {
-            for (int j = xMin; j <= xMax; j++) {
-                if (map[i][j] == '.') {
-                    return false;
-                }
+            if (map[i][xMin] == '.' || map[i][xMax] == '.') {
+                return false;
+            }
+        }
+        for (int j = xMin; j <= xMax; j++) {
+            if (map[yMin][j] == '.' || map[yMax][j] == '.') {
+                return false;
             }
         }
         return true;
